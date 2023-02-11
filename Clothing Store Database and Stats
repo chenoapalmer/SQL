@@ -1,0 +1,44 @@
+--Crete a clothing store database
+
+
+CREATE TABLE black_top (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO black_top VALUES (1,"top", "black", "small",32);
+INSERT INTO black_top VALUES (2,"top","black","medium",31);
+INSERT INTO black_top VALUES (3, "top", "black","xs",33);
+CREATE TABLE black_lace_top (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO black_lace_top VALUES (1, "top", "black","large",40);
+CREATE TABLE white_skirt (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO white_skirt VALUES(1, "skirt", "white","medium", 25);
+CREATE TABLE purple_coat (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO purple_coat VALUES (1, "coat","purple","medium",70);
+INSERT INTO purple_coat VALUES(2, "coat","purple","large",75);
+CREATE TABLE black_pants (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO black_pants VALUES (1, "pants","black","medium",50);
+CREATE TABLE grey_pants (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO grey_pants VALUES(1, "pants","grey","large",50);
+CREATE TABLE pink_top (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO pink_top VALUES (1, "top", "pink","xl",40);
+CREATE TABLE blue_dress (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO blue_dress VALUES(1,"dress","blue","small",35);
+CREATE TABLE black_dress (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO black_dress VALUES(1,"dress","black","large",35);
+CREATE TABLE green_coat (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO green_coat VALUES(1,"coat","green","small",70);
+CREATE TABLE blue_skirt (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO blue_skirt VALUES(1, "skirt","blue","xs",25);
+CREATE TABLE blue_pants (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO blue_pants VALUES(1,"pants","blue","large",55);
+CREATE TABLE purple_jacket (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO purple_jacket VALUES(1,"jacket","purple","medium", 40);
+CREATE TABLE pink_dress (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO pink_dress VALUES(1,"dress","pink","small",32);
+CREATE TABLE green_top (id INTEGER PRIMARY KEY, clothing_type TEXT, color TEXT, size TEXT,price INTEGER);
+INSERT INTO green_top VALUES (1,"top","green","xl",40);
+
+--display the database ordered by price.
+SELECT * FROM black_top ORDER BY price;
+
+--what is the avg price of black tops ordered by size?
+SELECT size, AVG(price) "avg black top price"
+FROM black_top 
+GROUP BY size;
