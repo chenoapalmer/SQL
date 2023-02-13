@@ -1,0 +1,98 @@
+/* Source:
+  https://www.kaggle.com/nasa/astronaut-yearbook
+*/
+--Data gathered by Pamela Fox https://gist.github.com/pamelafox/b98e03caca7d1ec14394a90ec1512cff
+
+--space_walks stats
+SELECT avg(Space_walks) FROM astronauts;
+SELECT max(Space_walks) FROM astronauts;
+SELECT min(Space_walks) FROM astronauts;
+
+SELECT name, SUM(Space_walks) AS total_spacewalks FROM astronauts
+Group BY name
+Having total_spacewalks >5;
+
+--Year stats
+SELECT min(Year) FROM astronauts;
+SELECT max(Year) FROM astronauts;
+
+SELECT name FROM astronauts WHERE Year >2000 AND Year <2005;
+
+--GroupNum
+SELECT max(GroupNum) FROM astronauts;
+SELECT min(GroupNum) FROM astronauts;
+SELECT COUNT(*) FROM astronauts GROUP by GroupNum;
+
+--Status
+SELECT status, COUNT(*) FROM astronauts;
+
+--Birthdate
+SELECT max(Birth_Date) FROM astronauts;
+SELECT min(Birth_Date) FROM astronauts;
+
+--Birthplace
+SELECT Birth_Place FROM astronauts GROUP By Birth_Place HAVING COUNT(
+*) >=2;
+
+--Gender
+SELECT name FROM astronauts WHERE gender="Female";
+SELECT name FROM astronauts WHERE gender="Male";
+
+--Almamater
+SELECT Alma_mater,COUNT(*) FROM astronauts GROUP BY Alma_Mater;
+
+--Undergrad
+SELECT Undergraduate_major,COUNT(*) FROM astronauts GROUP BY Undergraduate_Major ORDER BY COUNT(*);
+
+--Graduate major
+SELECT Graduate_major,COUNT(*) FROM astronauts GROUP BY Graduate_Major ORDER BY COUNT(*);
+
+--Military Rank
+SELECT Military_Rank,COUNT(*) FROM astronauts GROUP BY Military_Rank ORDER BY COUNT(*);
+
+--Military Branch
+SELECT Military_Branch,COUNT(*) FROM astronauts GROUP BY Military_Branch ORDER BY COUNT(*);
+
+--Space_Flights
+SELECT avg(Space_Flights) FROM astronauts;
+SELECT max(Space_Flights) FROM astronauts;
+SELECT min(Space_Flights) FROM astronauts;
+
+SELECT Military_Branch, Space_Flights FROM astronauts GROUP BY Military_Branch ORDER BY Space_Flights;
+
+--Space_Flights_hr
+SELECT avg(Space_Flight_hr) FROM astronauts;
+SELECT max(Space_Flight_hr) FROM astronauts;
+SELECT min(Space_Flight_hr) FROM astronauts;
+
+SELECT COUNT(*),
+    CASE
+        WHEN Space_flight_hr >1249 THEN "above_avg_space_flight_hr"
+        WHEN Space_flight_hr=1249 THEN "avg_space_flight_hr"
+        ELSE "below_avg_space_flight_hr"
+    END as "space_flight_length"
+    FROM astronauts
+    GROUP BY space_flight_length;
+    
+--Space walks hr
+SELECT avg(Space_Walks_hr) FROM astronauts;
+SELECT max(Space_Walks_hr) FROM astronauts;
+SELECT min(Space_Walks_hr) FROM astronauts;
+
+SELECT COUNT(*),
+    CASE
+        WHEN Space_Walks_hr >8 THEN "above_avg_space_walk_hr"
+        WHEN Space_Walks_hr=8 THEN "avg_space_walk_hr"
+        ELSE "below_avg_space_flight_hr"
+    END as "space_walk_length"
+    FROM astronauts
+    GROUP BY space_walk_length;
+--Missions
+SELECT Missions,COUNT(*) FROM astronauts GROUP BY Missions ORDER BY COUNT(*);
+
+--Death_date
+SELECT max(Death_Date) FROM astronauts;
+SELECT min(Death_Date) FROM astronauts;
+
+--Death Mission
+SELECT Death_Mission,COUNT(*) FROM astronauts GROUP BY Death_Mission ORDER BY COUNT(*);
