@@ -1,0 +1,42 @@
+/*CREATE TABLE OF AUTHORS and their book titles*/
+CREATE TABLE authors (
+id INTEGER PRIMARY KEY AUTOINCREMENT, 
+fullname TEXT,
+book_title TEXT);
+
+INSERT INTO authors (fullname,  book_title) VALUES ("Stephanie Meyer", "Twilight");
+INSERT INTO authors (fullname, book_title) VALUES ("Veronica Roth","Divergent");
+INSERT INTO authors (fullname,book_title) VALUES ("Francis Scott Fitzgerald", "The Great Gatsby");
+INSERT INTO authors (fullname,book_title) VALUES ("Suzanne Collins", "The Hunger Games");
+INSERT INTO authors (fullname,book_title) VALUES ("Francis Scott Fitzgerald", "The Great Gatsby");
+INSERT INTO authors (fullname,book_title) VALUES ("Andy Weir", "The Martian");
+
+/*Create Table of Movies and their star actor*/
+CREATE TABLE movies (
+id INTEGER PRIMARY KEY AUTOINCREMENT, 
+movie_title TEXT,
+actor TEXT);
+
+INSERT INTO movies (movie_title,actor) VALUES ("Twilight", "Kristen Stewart");
+INSERT INTO movies (movie_title,actor) VALUES ("Divergent", "Shailene Woodley");
+INSERT INTO movies (movie_title,actor) VALUES ("The Hunger Games", "Jennifer Lawrence");
+INSERT INTO movies (movie_title,actor) VALUES ("The Great Gatsby", "Leonardo DiCaprio");
+INSERT INTO movies (movie_title,actor) VALUES ("The Martian", "Matt Damon");
+
+/*Create Table of Movies and their director*/
+CREATE TABLE directors (
+id INTEGER PRIMARY KEY AUTOINCREMENT, 
+movie_title TEXT,
+director TEXT);
+INSERT INTO DIRECTORS (movie_title,director) VALUES ("Twilight", "Catherine Hardwicke");
+INSERT INTO directors (movie_title,director) VALUES ("Divergent", "Neil Burger");
+INSERT INTO directors (movie_title,director) VALUES ("The Hunger Games", "Gary Ross");
+INSERT INTO directors (movie_title,director) VALUES ("The Great Gatsby", "Baz Luhrmann");
+INSERT INTO directors (movie_title,director) VALUES ("The Martian", "Ridley Scott");
+/*Create table that joins author, director, and star actor for book to movie adaptations*/
+SELECT authors.fullname, movies.actor, directors.director
+FROM authors
+JOIN  movies
+ON authors.book_title=movies.movie_title
+JOIN directors
+ON directors.movie_title=authors.book_title;
